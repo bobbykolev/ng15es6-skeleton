@@ -1,0 +1,29 @@
+* {
+	box-sizing: border-box;
+}
+html, body, [ui-view] {
+	overflow-x: hidden;
+}
+
+.view-animate-container {
+	overflow-x: hidden;
+}
+.view-animate {
+	position: absolute;
+	width: 100%;
+}
+.view-animate.ng-enter{
+  transform: translate3d(100%, 0, 0);
+  transition: all 0.3s linear;
+}
+.view-animate.ng-leave {
+  transform: translate3d(0, 0, 0);
+  transition: all 0.3s linear;
+}
+.view-animate.ng-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition: all 0.3s linear;
+}
+.view-animate.ng-leave.ng-leave-active {
+	transform: translate3d(-100%, 0, 0);
+}
