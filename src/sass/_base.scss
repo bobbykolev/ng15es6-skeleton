@@ -1,15 +1,39 @@
 * {
 	box-sizing: border-box;
 }
+html, body {
+	height: 100%;
+}
 html, body, [ui-view] {
 	overflow-x: hidden;
+}
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-itmes: stretch;
+	flex-wrap: nowrap;
+	height: 100%;
+
+	div {
+		&:first-of-type {
+
+		}
+
+		&:nth-child(2) {
+			flex: 1 1 auto;
+			overflow-y: auto;
+    		min-height: 0px;
+		}
+	}
 }
 
 .view-animate-container {
 	overflow-x: hidden;
 }
 .view-animate {
-	position: absolute;
+	//position: absolute;
 	width: 100%;
 }
 .view-animate.ng-enter{
@@ -17,6 +41,7 @@ html, body, [ui-view] {
   transition: all 0.3s linear;
 }
 .view-animate.ng-leave {
+  opacity: 0;
   transform: translate3d(0, 0, 0);
   transition: all 0.3s linear;
 }

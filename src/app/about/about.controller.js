@@ -1,10 +1,8 @@
 class AboutCtrl {
   constructor() {
     'ngInject';
-    
-    let vm = this;
 
-    vm.title = 'About';
+    this.title = 'About';
   }
 }
 

@@ -5,7 +5,7 @@ function AboutConfig($stateProvider) {
   .state('app.about', {
     url: '/about/:slug',
     controller: 'AboutCtrl',
-    controllerAs: 'vm',
+    controllerAs: '$ctrl',
     templateUrl: 'about/about.html',
     title: 'Article'
   });

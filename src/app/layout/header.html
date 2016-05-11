@@ -1,13 +1,14 @@
+<modal></modal>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" ng-click="vm.toggleMenu($event, 'main-menu')" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" ng-click="$ctrl.toggleMenu($event, 'main-menu')" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" ui-sref="app.home" ng-bind="::vm.appName | lowercase">
+            <a class="navbar-brand" ui-sref="app.home" ng-bind="::$ctrl.appName | lowercase">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="main-menu">
@@ -16,10 +17,13 @@
                     <a class="nav-link" ui-sref-active="active" ui-sref="app.home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" ui-sref-active="active" ng-click="vm.menuItemClick($event, 'app.article')" ui-sref="app.article">Article</a>
+                    <a class="nav-link" ui-sref-active="active" ng-click="$ctrl.menuItemClick($event, 'app.article')" ui-sref="app.article">Article</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" ui-sref-active="active" ng-click="vm.menuItemClick($event, 'app.about')" ui-sref="app.about">About</a>
+                    <a class="nav-link" ui-sref-active="active" ng-click="$ctrl.menuItemClick($event, 'app.about')" ui-sref="app.about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="$ctrl.showModal($event)">Modal</a>
                 </li>
             </ul>
         </div>

@@ -1,10 +1,8 @@
 class ArticleCtrl {
   constructor() {
     'ngInject';
-    
-    let vm = this;
 
-    vm.title = 'Awesome Article';
+    this.title = 'Awesome Article';
   }
 }
 

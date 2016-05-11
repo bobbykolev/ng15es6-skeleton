@@ -1,0 +1,14 @@
+<div class="app-modal" ng-if="$ctrl.visible">
+	<div class="dim" ng-click="$ctrl.cancel($event, 'dim')">
+		<div>
+			<div ng-bind="::$ctrl.options.title"></div>
+			<div>
+			<div ng-repeat="c in $ctrl.options.rows track by $index" ng-bind-html="c"></div>
+			</div>
+			<div class="btns" ng-if="$ctrl.options.isConfirm">
+				<button class="btn btn-default" ng-click="$ctrl.cancel($event)">Cancel</button>
+				<button class="btn btn-default" ng-click="$ctrl.ok($event)">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
