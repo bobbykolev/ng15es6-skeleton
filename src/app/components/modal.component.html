@@ -1,4 +1,4 @@
-<div class="app-modal" ng-if="$ctrl.visible">
+<div class="app-modal" ng-class="$ctrl.visible ? 'active' : ''">
 	<div class="dim" ng-click="$ctrl.cancel($event, 'dim')">
 		<div>
 			<div ng-bind="::$ctrl.options.title"></div>

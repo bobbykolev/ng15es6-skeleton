@@ -11,20 +11,25 @@ class ModalCtrl {
 
     this.defaults = {
         title: 'Warrning',
-        rows: ['<div>body</div>'],
-        isConfirm: true
+        rows: ['<div></div>'],
+        isConfirm: true,
+        hasOk: true
     };
 
     this._$rootScope.show = this.show.bind(this);
   }
 
   show (options){
-    this.deferred = this._$q.defer();
+    if(this.visible){
+      //todo:
+    } else {
+      this.deferred = this._$q.defer();
 
-    Object.assign(this.options, this.defaults, options);
-    this.visible = true;
+      Object.assign(this.options, this.defaults, options);
+      this.visible = true;
 
-    return this.deferred.promise;
+      return this.deferred.promise;
+    }
   }
 
   cancel (e, isDim){
