@@ -1,32 +1,20 @@
 export default class ConfigService {
-	constructor($http, AppConstants){
+	constructor($http){
+		'ngInject';
+		
 		this._$http = $http;
-		this.config = {};
+		this.config = window.config;
 	}
 
-	getRestUrl () {
+	get restUrl () {
 		return this.config.restUrl;
 	}
 
-	getConfig () {
-		var that = this;
+	get appUrl () {
+		return this.config.appUrl;
+	}
 
-		return this._$http({
-			method: 'GET',
-			url: './config.json'
-		}).then(
-			(res) => {
-				if(res.data){
-					Object.assign(that.config, res.data);
-				}
-
-				return res;
-			},
-			(err) => {
-				console.error(err);
-
-				return err;
-			}
-		);
+	get appName () {
+		return this.config.appName;
 	}
 }

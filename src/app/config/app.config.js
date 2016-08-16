@@ -1,4 +1,4 @@
-function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider, $provide, AppConstants) {
+function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider, $provide) {
     'ngInject';
 
     // $locationProvider.html5Mode(true);
@@ -6,21 +6,20 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
     $stateProvider
         .state('app', {
             abstract: true,
-            templateUrl: 'layout/app-view.html',
-            resolve: {
-                config: function(ConfigService){
-                    return ConfigService.getConfig();
-                }
-            }
+            templateUrl: 'view-models/layout/app-view.html'
         });
 
     $urlRouterProvider.otherwise('/');
+
+    if (window.config && !window.config.debug) {
+        $compileProvider.debugInfoEnabled(false);
+    }
 
     $provide
         .decorator('$exceptionHandler', ['$delegate', extendExceptionHandler]);
 
     function extendExceptionHandler($delegate) {
-        var appErrorPrefix = '[' + AppConstants.appName + '] ';
+        var appErrorPrefix = '[' + window.config.appName + '] ';
 
         return function(exception, cause) {
             var errorData, msg;

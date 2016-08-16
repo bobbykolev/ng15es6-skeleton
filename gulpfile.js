@@ -11,8 +11,18 @@ var uglify        = require('gulp-uglify');
 var merge         = require('merge-stream');
 var sass = require('gulp-ruby-sass');
 var autoprefixer = require('gulp-autoprefixer');
+var gulpif = require('gulp-if');
+var concat = require('gulp-concat');
+var gulpIgnore = require('gulp-ignore');
+var buffer = require('vinyl-buffer');
+var ver = require('gulp-version-append');
+var argv = require('yargs').argv;
 
-// Where our files are located
+var buildType = argv.buildType || 'development';
+var env = argv.env || "DEV";
+var isProduction = buildType == 'production';
+
+//paths
 var jsFiles   = "src/app/**/*.js";
 var viewFiles = "src/app/**/*.html";
 var sassFiles = "src/sass/**";
@@ -20,7 +30,6 @@ var sassFiles = "src/sass/**";
 var interceptErrors = function(error) {
   var args = Array.prototype.slice.call(arguments);
 
-  // Send error to notification center with gulp-notify
   notify.onError({
     title: 'Compile Error',
     message: '<%= error.message %>'
@@ -37,14 +46,25 @@ gulp.task('browserify', ['views'], function() {
       .transform(ngAnnotate)
       .bundle()
       .on('error', interceptErrors)
-      //Pass desired output filename to vinyl-source-stream
       .pipe(source('app.js'))
-      // Start piping stream to tasks!
+      .pipe(buffer())
+      .pipe(gulpif(isProduction, uglify()))
       .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('html', function() {
-  return gulp.src("src/index.html")
+    var file = 'src/index.html';
+
+    return gulp.src(file)
+      .pipe(ver(['html', 'js', 'css']))
+      .on('error', interceptErrors)
+      .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('config', function() {
+    var file = 'src/config.js';
+
+    return gulp.src(file)
       .on('error', interceptErrors)
       .pipe(gulp.dest('./dist/'));
 });
@@ -59,7 +79,6 @@ gulp.task('views', function() {
       .pipe(gulp.dest('./src/app/config/'));
 });
 
-
 gulp.task('sass', function () {
     return sass('src/sass/style.scss')
             .pipe(autoprefixer('last 2 version', 'ie 9', 'ios 6', 'android 4'))
@@ -67,38 +86,43 @@ gulp.task('sass', function () {
             .pipe(gulp.dest('./dist/css'));
 });
 
+gulp.task('vendors', function(){
+    return gulp.src(["node_modules/fastclick/lib/fastclick.js",
+                      "node_modules/hammerjs/hammer.min.js"])
+         .pipe(concat('vendors.js'))
+         .pipe(gulp.dest('./dist/libs'));
+});
+
 gulp.task('bootstrap', function () {
     return gulp.src('node_modules/bootstrap/dist/**')
             .pipe(gulp.dest('./dist/bootstrap'));
 });
 
-// This task is used for building production ready
-// minified JS/CSS files into the prod/ folder
-gulp.task('build', ['html', 'bootstrap', 'sass', 'browserify'], function() {
-  var html = gulp.src("dist/index.html")
-                 .pipe(gulp.dest('./prod/'));
-
-  var js = gulp.src("dist/app.js")
-               .pipe(uglify())
-               .pipe(gulp.dest('./prod/'));
-
-   var css = gulp.src("dist/css/style.css")
-               .pipe(gulp.dest('./prod/css/'));
-
-   //todo add libs
-
-  return merge(html,css, js);
+gulp.task('fonts', function () {
+    return gulp.src('./src/fonts/**')
+            .pipe(gulp.dest('./dist/fonts'));
 });
 
-gulp.task('default', ['html', 'bootstrap', 'sass', 'browserify'], function() {
+gulp.task('img', function () {
+    return gulp.src('./src/img/**')
+            .pipe(gulp.dest('./dist/img'));
+});
+
+gulp.task('resources', ['bootstrap', 'fonts', 'img', 'vendors', 'config'], function(){
+
+});
+
+gulp.task('build', ['html', 'resources', 'sass', 'browserify'], function() {
+
+});
+
+gulp.task('default', ['build'], function() {
 
   browserSync.init(['./dist/**/**.**'], {
     server: "./dist",
-    port: 4000,
-    notify: false,
-    ui: {
-      port: 4001
-    }
+    open: false,
+    port: 5000,
+    notify: false
   });
 
   gulp.watch("src/index.html", ['html']);

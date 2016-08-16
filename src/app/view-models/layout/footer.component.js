@@ -1,8 +1,8 @@
 class AppFooterCtrl {
-  constructor(AppConstants) {
+  constructor(ConfigService) {
     'ngInject';
 
-    this.appName = AppConstants.appName;
+    this.appName = ConfigService.appName;
 
     // Get today's date to generate the year
     this.date = new Date();
@@ -12,7 +12,7 @@ class AppFooterCtrl {
 let AppFooter = {
   controller: AppFooterCtrl,
   controllerAs: '$ctrl',
-  templateUrl: 'layout/footer.html'
+  templateUrl: 'view-models/layout/footer.html'
 };
 
 export default AppFooter;

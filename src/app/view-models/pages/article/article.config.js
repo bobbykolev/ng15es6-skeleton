@@ -6,7 +6,7 @@ function ArticleConfig($stateProvider) {
     url: '/article/:slug',
     controller: 'ArticleCtrl',
     controllerAs: '$ctrl',
-    templateUrl: 'article/article.html',
+    templateUrl: 'view-models/pages/article/article.html',
     title: 'Article'
   });
 

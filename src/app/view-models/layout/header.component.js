@@ -1,10 +1,10 @@
 class AppHeaderCtrl {
-  constructor(AppConstants, $state, $rootScope) {
+  constructor(ConfigService, $state, $rootScope) {
     'ngInject';
 
     this._$state = $state;
     this._$rootScope = $rootScope;
-    this.appName = AppConstants.appName;
+    this.appName = ConfigService.appName;
   }
 
   toggleMenu (e, id){
@@ -27,7 +27,7 @@ class AppHeaderCtrl {
 let AppHeader = {
   controller: AppHeaderCtrl,
   controllerAs: '$ctrl',
-  templateUrl: 'layout/header.html'
+  templateUrl: 'view-models/layout/header.html'
 };
 
 export default AppHeader;

@@ -6,7 +6,7 @@ function AboutConfig($stateProvider) {
     url: '/about/:slug',
     controller: 'AboutCtrl',
     controllerAs: '$ctrl',
-    templateUrl: 'about/about.html',
+    templateUrl: 'view-models/pages/about/about.html',
     title: 'Article'
   });
 

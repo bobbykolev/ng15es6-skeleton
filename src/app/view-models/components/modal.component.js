@@ -1,5 +1,5 @@
 class ModalCtrl {
-  constructor(AppConstants, $rootScope, $q) {
+  constructor($rootScope, $q) {
     'ngInject';
 
     this._$rootScope = $rootScope;
@@ -50,7 +50,7 @@ class ModalCtrl {
 let Modal = {
   controller: ModalCtrl,
   controllerAs: '$ctrl',
-  templateUrl: 'components/modal.component.html'
+  templateUrl: 'view-models/components/modal.component.html'
 };
 
 export default Modal;
