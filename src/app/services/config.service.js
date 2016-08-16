@@ -1,8 +1,7 @@
 export default class ConfigService {
-	constructor($http){
+	constructor(){
 		'ngInject';
-		
-		this._$http = $http;
+
 		this.config = window.config;
 	}
 
