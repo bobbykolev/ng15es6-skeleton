@@ -2,10 +2,11 @@
 @import '_variables';
 @import '_mixins';
 @import '_colors';
-@import '_base';
 
 @import '_normalize';
 @import '_bootstrap';
+
+@import '_base';
 
 //components
 @import 'components/_layout';

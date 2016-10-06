@@ -1,0 +1,56 @@
+//nav toggle
+#nav-ani-icon {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  //margin: 50px auto;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+#nav-ani-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  //background: #d3531a;
+  border-radius: 0;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+#nav-ani-icon span:nth-child(1) {
+  top: 9px;
+  transform-origin: left center;
+}
+
+#nav-ani-icon span:nth-child(2) {
+  top: 18px;
+  transform-origin: left center;
+}
+
+#nav-ani-icon span:nth-child(3) {
+  top: 31px;
+  transform-origin: left center;
+}
+
+#nav-ani-icon.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 6px;
+  left: 8px;
+}
+
+#nav-ani-icon.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+#nav-ani-icon.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 30px;
+  left: 8px;
+}

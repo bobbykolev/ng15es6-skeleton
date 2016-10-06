@@ -7,3 +7,13 @@ html, body, [ui-view] {
 * {
 	box-sizing: border-box;
 }
+
+button {
+	background: none;
+	border: none;
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+}
