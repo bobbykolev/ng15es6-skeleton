@@ -1,11 +1,12 @@
-* {
-	box-sizing: border-box;
+body {
+	color: #555;
+	font-family: 'Titillium Web', Helvetica, Arial;
+	font-weight: 400;
 }
-html, body {
-	height: 100%;
-}
-html, body, [ui-view] {
-	overflow-x: hidden;
+a {
+    color: $mainColor;
+    text-decoration: none;
+    background-color: transparent;
 }
 
 #wrapper {
@@ -16,7 +17,7 @@ html, body, [ui-view] {
 	flex-wrap: nowrap;
 	height: 100%;
 
-	div {
+	> div {
 		&:first-of-type {
 
 		}

@@ -4,3 +4,5 @@ node_modules
 prod/*
 dist/*
 src/app/config/app.templates.js
+.idea/
+*.iml

@@ -93,10 +93,10 @@ gulp.task('vendors', function(){
          .pipe(gulp.dest('./dist/libs'));
 });
 
-gulp.task('bootstrap', function () {
-    return gulp.src('node_modules/bootstrap/dist/**')
+/*gulp.task('bootstrap', function () {
+    return gulp.src('node_modules/bootstrap/dist*//**')
             .pipe(gulp.dest('./dist/bootstrap'));
-});
+});*/
 
 gulp.task('fonts', function () {
     return gulp.src('./src/fonts/**')
@@ -108,7 +108,7 @@ gulp.task('img', function () {
             .pipe(gulp.dest('./dist/img'));
 });
 
-gulp.task('resources', ['bootstrap', 'fonts', 'img', 'vendors', 'config'], function(){
+gulp.task('resources', ['fonts', 'img', 'vendors', 'config'], function(){
 
 });
 

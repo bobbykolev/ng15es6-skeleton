@@ -4,6 +4,9 @@
 @import '_colors';
 @import '_base';
 
+@import '_normalize';
+@import '_bootstrap';
+
 //components
 @import 'components/_layout';
 @import 'components/_modal';
