@@ -1,7 +1,7 @@
 //nav toggle
 #nav-ani-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   position: relative;
   //margin: 50px auto;
   transform: rotate(0deg);
@@ -24,23 +24,23 @@
 }
 
 #nav-ani-icon span:nth-child(1) {
-  top: 9px;
+  top: 10px;
   transform-origin: left center;
 }
 
 #nav-ani-icon span:nth-child(2) {
-  top: 18px;
+  top: 19px;
   transform-origin: left center;
 }
 
 #nav-ani-icon span:nth-child(3) {
-  top: 31px;
+  top: 32px;
   transform-origin: left center;
 }
 
 #nav-ani-icon.open span:nth-child(1) {
   transform: rotate(45deg);
-  top: 6px;
+  top: 7px;
   left: 8px;
 }
 
@@ -51,6 +51,6 @@
 
 #nav-ani-icon.open span:nth-child(3) {
   transform: rotate(-45deg);
-  top: 30px;
+  top: 28px;
   left: 8px;
 }

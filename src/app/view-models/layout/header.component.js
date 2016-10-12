@@ -12,15 +12,18 @@ class AppHeaderCtrl {
   }
 
   $postLink () {
-    let height = window.innerHeight || 0,
-        width = window.innerWidth || 0,
-        element = document.querySelectorAll('#main-menu>ul')[0];
-
-    //set doc height on toggle menu for small res
-    height && width < 768 ? element.style.height = (height-1) + 'px' : null;
-
     this.menu = document.getElementById(this.menuId);
     this.btn = document.getElementById(this.btnId);
+
+    window.addEventListener('resize', this.onResize.bind(this));
+    this.menu.addEventListener('click', this.handleMenuClick.bind(this));
+
+    this.onResize();
+  }
+
+  $onDestroy () {
+    window.removeEventListener('resize', this.onResize.bind(this));
+    this.menu.removeEventListener('click', this.handleMenuClick.bind(this));
   }
 
   toggleMenu (e){
@@ -51,6 +54,21 @@ class AppHeaderCtrl {
       this.menu.classList.add('collapse');
       this.btn.classList.remove('open');
     }
+  }
+
+  handleMenuClick (e) {
+    if (e && e.target && e.target.id == this.menuId) {
+      this.toggleClasses(false);
+    }
+  }
+
+  onResize () {
+    let height = window.innerHeight || 0,
+        width = window.innerWidth || 0,
+        element = document.querySelectorAll('#main-menu>ul')[0];
+
+    //set doc height on toggle menu for small res
+    element.style.height = height && width < 768 ? (height-1) + 'px' : 'inherit';
   }
 }
 
