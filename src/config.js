@@ -2,7 +2,7 @@
 'use strict';
 
 window && (window.config = {
-	"appName": "ngSceleton",
+	"appName": "ng1.5 Skeleton",
     "appUrl": "",
     "restUrl": "",
     "debug": true,
