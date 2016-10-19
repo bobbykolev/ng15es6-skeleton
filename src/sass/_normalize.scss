@@ -2,6 +2,8 @@ html, body, [ui-view] {
   margin: 0;
   height: 100%;
   //overflow-x: hidden;
+  font-size: 14px;
+  line-height: 1.42857143;
 }
 
 * {
